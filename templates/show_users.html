@@ -1,0 +1,51 @@
+{% extends 'main.html' %}
+
+{% block title %}Users{% endblock %}
+
+{% block contain %}
+
+{% if user.is_authenticated %}
+
+    <table style="display: inline-block; float: left; direction: ltr; border-collapse: collapse;">
+
+    <p><a href="{% url 'home' %}">Return to home</a></p>
+          <tr>
+            <th style="width:1%">Number</th>
+            <th style="width:1%">UserName</th>
+            <th style="width:5%">FirstName</th>
+            <th style="width:5%">LastName</th>
+            <th style="width:5%">Email</th>
+              {% if user.is_superuser %}
+            <th style="width:1%">Functions:</th>
+              {% endif %}
+          </tr>
+    {% for item in users %}
+            <tr>
+                <td style="width:1%"> {{forloop.counter}} </td>
+                <td>{{item.username}}</td>
+                <td>{{item.first_name}}</td>
+                <td>{{item.last_name}}</td>
+                <td>{{item.email}}</td>
+                {% if user.is_superuser %}
+                <td>
+                    <form action="/users/delete/" method="post">
+                        {% csrf_token %}
+                        <input hidden name="id" value="{{item.id}}">
+                        <input type="submit" value="delete">
+                    </form>
+                <!--<a href="/delete-user/{{item.id}}">Delete</a>-->
+                <a href="/users/{{item.id}}">Edit</a>
+                </td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </table>
+              <br>
+
+{% else %}
+<center>
+  <h1>First Login Please</h1>
+  <a href="{% url 'login' %}"><h2>Login</h2></a>
+</center>
+{% endif %}
+{% endblock %}

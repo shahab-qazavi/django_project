@@ -1,0 +1,44 @@
+{% extends 'main.html' %}
+
+{% block title %}Users{% endblock %}
+
+{% block contain %}
+
+
+    <table style="display: inline-block; float: left; direction: ltr; border-collapse: collapse;">
+
+    <p><a href="{% url 'home' %}">Return to home</a></p>
+          <tr>
+            <th style="width:1%">Id</th>
+            <th style="width:1%">UserName</th>
+            <th style="width:5%">FirstName</th>
+            <th style="width:5%">LastName</th>
+            <th style="width:5%">Email</th>
+          </tr>
+
+            <tr>
+                <td style="width:1%"> {{users.id}} </td>
+                <td>{{users.username}}</td>
+                <td>{{users.first_name}}</td>
+                <td>{{users.last_name}}</td>
+                <td>{{users.email}}</td>
+
+            </tr>
+
+        </table>
+              <br><br><br><br><br><br>
+<br>
+<div>
+    <form action="/set-permissions/{{users.id}}" method="POST">
+  <input type="checkbox" name="Can delete document" value="delete_img"> Can Delete Images<br><br>
+  <input type="checkbox" name="Can add document" value="add_img"> Can Add Images<br><br>
+  <input type="checkbox" name="Can add user" value="add_user">Can Add Users<br><br>
+  <input type="checkbox" name="Can change user" value="edit_users" >Can Edit Users<br><br>
+  <input type="checkbox" name="Can delete user" value="delete_users">Can Delete Users<br><br>
+  <input type="checkbox" name="Can view user" value="see_users"> Can See Users<br><br>
+  <input type="hidden" name="id" value="{{users.id}}" />
+  <input type="submit" value="Submit">
+</form>
+    </div>
+
+{% endblock %}

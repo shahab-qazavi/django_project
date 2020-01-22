@@ -1,0 +1,25 @@
+{% extends 'main.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block contain %}
+{% load jalali_tags %}
+{% load static %}
+<center>
+
+  <link rel="stylesheet" href="css/persian.datepicker.css"/>
+  <script src="js/jquery.js"></script>
+  <script src="js/persian.date.js"></script>
+  <script src="js/persian.datepicker.js"></script>
+
+
+<script type="text/javascript">
+    $('.normal-example').persianDatepicker();
+  $(document).ready(function() {
+    $(".example1").pDatepicker();
+  });
+</script>
+
+<input class="normal-example" />
+    </center>
+ {% endblock %}

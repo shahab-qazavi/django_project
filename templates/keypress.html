@@ -1,0 +1,37 @@
+{% extends 'main.html' %}
+
+{% block title %}KetPress{% endblock %}
+
+{% block contain %}
+
+<center>
+          <input type="text" id="txt_username" placeholder="Add Some Text" onkeypress="javascript:doit_onkeypress(event);" />
+    <br><br>
+<div class="container" >
+    <div id="txt"></div>
+    </div>
+</center>
+
+
+
+        <script type="text/javascript">
+                var arr = [];
+            function doit_onkeypress(event){
+		var el = document.getElementById("txt");
+                if (event.keyCode == 13 || event.which == 13){
+		    arr.unshift(event.target.value);
+			event.target.value = "";
+			el.innerHTML = "";
+		for(var i = 0; i < arr.length; i++){
+			var item = "<div style='padding:15px; text-align:left; border: 1px solid #e3e3e3; background: #f5f5f5; color: black; margin-bottom: 4px; border-radius: 10px;'>" + arr[i] + "</div>";
+			el.insertAdjacentHTML("beforeend",item);
+		}
+                }
+            }
+        </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+{% endblock %}

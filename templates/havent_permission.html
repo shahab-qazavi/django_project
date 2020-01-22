@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Permission{% endblock %}
+
+{% block contain %}
+{% if user.is_authenticated %}
+    <center>
+    <h1>You Don't Have Permission</h1>
+    <p><a href="{% url 'home' %}">Return to home</a></p>
+    </center>
+{% else %}
+<center>
+  <h1>First Login Please</h1>
+  <a href="{% url 'login' %}"><h2>Login</h2></a>
+</center>
+{% endif %}
+{% endblock %}

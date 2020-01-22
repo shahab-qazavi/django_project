@@ -1,0 +1,56 @@
+{% extends 'main.html' %}
+
+{% block title %}Date Picker{% endblock %}
+
+{% block contain %}
+{% load staticfiles %}
+<center>
+    <article class="container">
+
+        <section class="jumbotron text-center">
+
+                <section class="githubButtons">
+
+        <article class="row col-11" style="margin:0 auto">
+
+
+            <div class="col-12 col-sm-6 col-md-5 col-lg-6">
+                <h2 class="display-5 farsi-font farsi-input">تاریخ مورد نظر را انتخاب کنید</h2>
+                <br>
+                <div class="input-group">
+                    <form action="/jalali/" method="POST"> {% csrf_token %}
+                    <input id="date_input_one" name="date" type="text" class="form-control farsi-input farsi-font" placeholder="یک تاریخ انتخاب کنید">
+                    <input type="submit" name="submit" value="Okay Bro!">
+                        </form>
+                    <div class="input-group-btn">
+
+                        <button id="date_btn_one" class="btn btn-info" type="submit">
+                            <i class="fa fa-calendar"></i>
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <script type="text/javascript">
+                    Calendar.setup({
+                        inputField: "date_input_one",   // id of the input field
+                        button: "date_btn_one",   // trigger for the calendar (button ID)
+                        ifFormat: "%Y/%m/%d",       // format of the input field
+                        dateType: 'jalali',
+                        weekNumbers: true
+                    });
+                </script>
+
+
+            </div>
+
+        </article>
+                </section>
+        </section>
+
+        </article>
+
+    </article>
+</center>
+ {% endblock %}

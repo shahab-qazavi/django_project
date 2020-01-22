@@ -1,0 +1,37 @@
+{% extends 'main.html' %}
+
+{% block title %}Users{% endblock %}
+
+{% block contain %}
+
+    <table style="display: inline-block; float: left; direction: ltr; border-collapse: collapse;">
+
+    <p><a href="{% url 'home' %}">Return to home</a></p>
+          <tr>
+            <th style="width:1%">Id</th>
+            <th style="width:1%">UserName</th>
+            <th style="width:5%">FirstName</th>
+            <th style="width:5%">LastName</th>
+            <th style="width:5%">Email</th>
+              {% if user.is_superuser %}
+            <th style="width:1%">Functions:</th>
+              {% endif %}
+          </tr>
+    {% for item in users %}
+            <tr>
+                <td style="width:1%"> {{item.id}} </td>
+                <td>{{item.username}}</td>
+                <td>{{item.first_name}}</td>
+                <td>{{item.last_name}}</td>
+                <td>{{item.email}}</td>
+                {% if user.is_superuser %}
+                <td>
+                <a href="/permissions-field/{{item.id}}">Permissions</a>
+                </td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </table>
+              <br>
+
+{% endblock %}

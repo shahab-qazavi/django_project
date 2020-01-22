@@ -1,0 +1,333 @@
+﻿<!DOCTYPE html>
+<html dir="rtl">
+<head>
+	<title>kamaDatepicker - demo</title>
+
+	<link type="text/css" rel="stylesheet" href="../node_modules/vazir-font/dist/font-face.css" />
+	<link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css" />
+	<link type="text/css" rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+	
+	<link type="text/css" rel="stylesheet" href="../dist/kamadatepicker.min.css"/>
+
+	<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+	<script src="../dist/kamadatepicker.min.js"></script>
+
+	<style>
+		body {
+			font-family: Vazir;
+		}
+		.rtl-col {
+			float: right;
+		}
+		#bd-next-date2, #bd-prev-date2 {
+			font-size: 20px;
+		}
+		.tooltip > .tooltip-inner {
+			font-family: Vazir;
+			font-size: 12px;
+			padding: 4px;
+			white-space: pre;
+			max-width: none;
+		}
+		#options-table {
+			border-collapse: collapse;
+			width: 100%;
+		}
+		#options-table td, #options-table th {
+			border: 1px solid #777;
+			text-align: left;
+			padding: 8px;
+		}
+		#options-table tr:nth-child(even) {
+			background-color: #dddddd;
+		}
+		#options-table td:nth-child(1) {
+			text-align: right;
+		}
+	</style>
+</head>
+<body class="container">
+	<h1>تقویم شمسی کاما - نسخه 1.4.7</h1>
+	<br>
+	<p>تقویم شمسی جاوااسکریپت (مبتنی بر jquery). در این صفحه (دمو) از bootstrap و font awesome هم استفاده شده است (فقط برای نشان دادن سازگاری تقویم)</p>
+	<br>
+	
+	<div class="row">
+		<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 rtl-col">
+			<span class="label label-default">حالت پیشفرض</span>
+			<input type="text" id="date1">
+			<br>
+			<ul>
+				<li>تغییر رنگ دکمه ها</li>
+			</ul>
+		</div>
+		<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 rtl-col">
+			<span class="label label-default">حالت سفارشی 1#</span>
+			<input type="text" id="date2">
+			<br>
+			<ul>
+				<li>استفاده از placeholder</li>
+				<li>اعداد تک رقمی بدون صفر نمایش داده شوند</li>
+				<li>جلوگیری از بسته شدن تقویم بعد از انتخاب تاریخ</li>
+				<li>استفاده از font awesome برای دکمه های بعدی و قبلی</li>
+				<li>تغییر رنگ دکمه ها</li>
+				<li>نمایش اعداد به فارسی</li>
+				<li>متمایز کردن تاریخ امروز</li>
+				<li>متمایز کردن روزهای تعطیل</li>
+				<li>متمایز نشان دادن روز انتخاب شده</li>
+				<li>سینک شدن تقویم با مقدار ورودی</li>
+				<li>نمایش دکمه "برو به امروز"</li>
+			</ul>
+		</div>
+		<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 rtl-col">
+			<span class="label label-default">حالت سفارشی 2#</span>
+			<input type="text" id="date3">
+			<br>
+			<ul>
+				<li>استفاده از فایل های png به عنوان دکمه های بعدی و قبلی</li>
+				<li>نمایش اعداد به فارسی</li>
+				<li>متمایز کردن تاریخ امروز</li>
+				<li>متمایز کردن روزهای تعطیل</li>
+				<li>متمایز نشان دادن روز انتخاب شده</li>
+				<li>سینک شدن تقویم به ورودی</li>
+				<li>محدود کردن سال‌های قابل انتخاب قبل از سال جاری به 0 سال</li>
+				<li>محدود کردن سال‌های قابل انتخاب بعد از سال جاری به 3 سال</li>
+				<li>جابجا کردن دکمه‌های قبلی و بعدی</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-4 rtl-col">
+			<span class="label label-default">حالت سفارشی 4#</span>
+			<input type="text" id="date4">
+			<br>
+			<ul>
+				<li>نمایش تقویم همیشه در بالای فیلد</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="row" id="date5-parent" style="background-color: linen">
+		<div class="form-group col-xs-12 col-sm-6 rtl-col" style="padding-top: 260px">
+			<span class="label label-default">حالت سفارشی 5-1#</span>
+			<input type="text" id="date5-1">
+			<br>
+			<ul>
+				<li>محاسبه اتوماتیک موقعیت مناسب برای نمایش تقویم نسبت به parent element مشخص شده	</li>
+			</ul>
+		</div>
+
+		<div class="form-group col-xs-12 col-sm-6 rtl-col" style="padding-top: 40px;">
+			<span class="label label-default">حالت سفارشی 5-2#</span>
+			<input type="text" id="date5-2">
+			<br>
+			<ul>
+				<li>محاسبه اتوماتیک موقعیت مناسب برای نمایش تقویم نسبت به parent element مشخص شده	</li>
+			</ul>
+		</div>
+	</div>
+	
+	<div class="row" style="margin-top: 20px;">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<h2>روش استفاده</h2>
+			<p>پس از اضافه کردن jquery به پروژه فایل های kamadatepicker.js و kamadatepicker.css را هم به پروژه خود اضافه کنید.</p>
+		</div>
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="float: left; text-align: left; direction: ltr;">
+			<p>HTML:</p>
+			<p style="background-color: #EEE; padding: 10px 20px;">&lt;input type="text" id="test-date-id"&gt;</p>
+			<p>JavaScript:</p>
+			<p style="background-color: #EEE; padding: 10px 20px;">kamaDatepicker('test-date-id');</p>
+		</div>
+		
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<p>همچنین می توانید تنظیمات دلخواه را به عنوان پارامتر دوم اضافه کنید.</p>
+		</div>
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="float: left; text-align: left; direction: ltr;">
+			<p>JavaScript:</p>
+			<p style="background-color: #EEE; padding: 10px 20px;">kamaDatepicker('test-date-id', { buttonsColor: "red", forceFarsiDigits: true });</p>
+		</div>
+	</div>
+
+	
+	<div class="row" style="margin: 20px 0 100px;">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<h2>تنظیمات</h2>
+			
+			<table id="options-table">
+				<thead>
+					<tr>
+						<th>توضیحات</th>
+						<th>مقدار پیشفرض</th>
+						<th>مقادیر قابل قبول</th>
+						<th>نام</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>-</td>
+						<td>""</td>
+						<td>string</td>	
+						<td>placeholder</td>
+					</tr>
+					<tr>
+						<td>در صورتی که true باشد اعداد یک رقمی مثل هشت با یک صفر اضافه (08) نمایش داده می شوند.</td>
+						<td>true</td>
+						<td>true, false</td>	
+						<td>twodigit</td>
+					</tr>
+					<tr>
+						<td>در صورتی که true باشد تقویم بعد از انتخاب یک روز بسته می شود.</td>
+						<td>true</td>
+						<td>true, false</td>	
+						<td>closeAfterSelect</td>
+					</tr>
+					<tr>
+						<td>می توانید آدرس یک عکس یا یک class از font awesome یا glyphy icons را به صورت string پاس دهید تا به جای عبارت "بعدی" در تقویم نمایش داده شود.</td>
+						<td>بعدی</td>
+						<td>string</td>	
+						<td>nextButtonIcon</td>
+					</tr>
+					<tr>
+						<td>می توانید آدرس یک عکس یا یک class از font awesome یا glyphy icons را به صورت string پاس دهید تا به جای عبارت "قبلی" در تقویم نمایش داده شود.</td>
+						<td>قبلی</td>
+						<td>string</td>	
+						<td>previousButtonIcon</td>
+					</tr>
+					<tr>
+						<td>می توانید یکی از اسامی استاندارد رنگ ها مانند "red" یا به صورت "#FF0000" را پاس دهید.</td>
+						<td>پیشفرض</td>
+						<td>string</td>	
+						<td>buttonsColor</td>
+					</tr>
+					<tr>
+						<td>در صورتی که true باشد بدون توجه به اینکه اعداد فارسی در فونت استفاده شده پشتیبانی می شوند یا نه، تقویم از اعداد فارسی برای نمایش اعداد استفاده می کند.</td>
+						<td>false</td>
+						<td>true, false</td>	
+						<td>forceFarsiDigits</td>
+					</tr>
+					<tr>
+						<td>در صورتی که true باشد تاریخ امروز را متامیز از بقیه روزها نشان می دهد.</td>
+						<td>false</td>
+						<td>true, false</td>	
+						<td>markToday</td>
+					</tr>
+					<tr>
+						<td>در صورتی که true باشد روزهای تعطیل (فعلا فقط جمعه ها) را متمایز از بقیه روزها نشان می دهد.</td>
+						<td>false</td>
+						<td>true, false</td>	
+						<td>markHolidays</td>
+					</tr>
+					<tr>
+						<td>در صورتی که true باشد تاریخ انتخاب شده را متمایز از بقیه روزها نشان می دهد.</td>
+						<td>false</td>
+						<td>true, false</td>	
+						<td>highlightSelectedDay</td>
+					</tr>
+					<tr>
+						<td>در صورتی که true باشد تقویم بعد از باز شدن سال و ماه متناسب با مقدار ورودی را نشان می دهد، در غیر اینصورت همیشه تاریخ امروز نمایش داده خواهد شد.</td>
+						<td>false</td>
+						<td>true, false</td>	
+						<td>sync</td>
+					</tr>
+					<tr>
+						<td>در صورتی که true باشد دکمه "برو به امروز" در پایین تقویم نمایش داده می شود.</td>
+						<td>false</td>
+						<td>true, false</td>	
+						<td>gotoToday</td>
+					</tr>
+					<tr>
+						<td>تعداد سال‌های قابل انتخاب، قبل از سال جاری</td>
+						<td>95</td>
+						<td>number</td>	
+						<td>pastYearsCount</td>
+					</tr>
+					<tr>
+						<td>تعداد سال‌های قابل انتخاب، بعد از سال جاری</td>
+						<td>6</td>
+						<td>number</td>	
+						<td>futureYearsCount</td>
+					</tr>
+					<tr>
+						<td>جابجا کردن دکمه‌های ماه بعدی و قبلی</td>
+						<td>false</td>
+						<td>true, false</td>	
+						<td>swapNextPrev</td>
+					</tr>
+					<tr>
+						<td>
+							موقعیت نمایش تقویم
+							<ul>
+								<li><b>top:</b> تقویم همیشه در بالای input مربوطه نمایش داده خواهد شد.</li>
+								<li><b>bottom:</b> تقویم همیشه در پایین input مربوطه نمایش داده خواهد شد.</li>
+								<li><b>auto:</b> در صورتی که پایین input فضای کافی برای نمایش تقویم وجود داشته باشد، تقویم در پایین input نمایش داده خواهد شد. در غیر اینصورت اگر در بالای input فضای کافی برای نمایش تقویم وجود داشته باشد، تقویم در بالای input نمایش داده خواهد شد. و در صورتی که نه پایین و نه بالای input فضای کافی برای نمایش تقویم وجود نداشته باشد، تقویم در پایین input نمایش داده خواهد شد.</li>
+							</ul>
+						</td>
+						<td>bottom</td>
+						<td>top, bottom, auto</td>
+						<td>position</td>
+					</tr>
+					<tr>
+						<td>id مربوط به parent element که موقعیت نمایش تقویم باید نسبت به آن محاسبه شود.</td>
+						<td></td>
+						<td>string</td>
+						<td>parentId</td>
+					</tr>
+				</tbody>
+			</table>
+			
+		</div>
+	</div>
+
+	<script>
+		kamaDatepicker('date1', { buttonsColor: "red" });
+		
+		var customOptions = {
+			placeholder: "روز / ماه / سال"
+			, twodigit: false
+			, closeAfterSelect: false
+			, nextButtonIcon: "fa fa-arrow-circle-right"
+			, previousButtonIcon: "fa fa-arrow-circle-left"
+			, buttonsColor: "blue"
+			, forceFarsiDigits: true
+			, markToday: true
+			, markHolidays: true
+			, highlightSelectedDay: true
+			, sync: true
+			, gotoToday: true
+		}
+		kamaDatepicker('date2', customOptions);
+
+		kamaDatepicker('date3', { 
+			nextButtonIcon: "assets/timeir_prev.png"
+			, previousButtonIcon: "assets/timeir_next.png"
+			, forceFarsiDigits: true
+			, markToday: true
+			, markHolidays: true
+			, highlightSelectedDay: true
+			, sync: true
+			, pastYearsCount: 0
+			, futureYearsCount: 3
+			, swapNextPrev: true
+		});
+
+		kamaDatepicker('date4', {
+			position: 'top' // top, bottom or auto
+		});
+
+		kamaDatepicker('date5-1', {
+			position: 'auto' // top, bottom or auto
+			, parentId: 'date5-parent'
+		});
+		kamaDatepicker('date5-2', {
+			position: 'auto' // top, bottom or auto
+			, parentId: 'date5-parent'
+		});
+
+		// for testing sync functionallity
+		$("#date2").val("1311/10/01");
+  </script>
+</body>
+</html>

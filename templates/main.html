@@ -1,0 +1,219 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+    {% load jalali_tags %}
+
+    {% load bootstrap4 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript jquery='full' %}
+
+<!--tag-->
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.1.3/flatly/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href='{% static "dist/jquery-tagsinput.min.css" %}'/>
+<link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/color/jquery.color.plus-names-2.1.2.min.js" integrity="sha256-Wp3wC/dKYQ/dCOUD7VUXXp4neLI5t0uUEF1pg0dFnAE=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" defer></script>
+    <script src='{% static "dist/jquery-tagsinput.min.js" %}' defer></script>
+
+<!--tag-->
+
+    <!--keypress-->
+
+
+
+
+    <!--keypress-->
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" type="text/css" href='{% static "assets/css/bootstrap.min.css" %}'>
+    <link rel="stylesheet" type="text/css" href='{% static "assets/css/customize.css" %}'>
+    <link rel="stylesheet" type="text/css" href='{% static "assets/css/calendar/calendar-blue.css" %}'>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+        crossorigin="anonymous">
+
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+    <script src='{% static "assets/js/jquery-3.3.1.min.js" %}'></script>
+    <script src='{% static "assets/js/bootstrap.min.js" %}'></script>
+    <script src='{% static "assets/js/jalali.js" %}'></script>
+    <script src='{% static "assets/js/calendar.js" %}'></script>
+    <script src='{% static "assets/js/calendar-setup.js" %}'></script>
+    <script src='{% static "lang/calendar-fa.js" %}'></script>
+
+<style>
+
+table, th, td {
+    text-align: center;
+}
+th, td {
+  padding: 15px;
+  border: 1px solid grey;
+}
+th {
+  text-align: center;
+  background-color: #E9E4E4;
+}
+td {
+background-color: #B2AFAF;
+}
+table {
+    width:40%;
+    margin: 0 auto;
+}
+
+.collapsible {
+  background-color: #3E3E3E;
+  color: #EDEDED;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: right;
+  outline: none;
+  font-size: 15px;
+}
+
+.active, .collapsible:hover {
+  <!--background-color: gray;-->
+}
+
+.content {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  text-align : right;
+  transition: max-height 0.2s ease-out;
+  background-color: #959595;
+
+}
+
+a {
+    text-decoration : none;
+    text-decoration-color : none;
+}
+.content a:nth-of-type(odd) {
+    transform-origin: center top;
+    transform: perspective(300px) rotateX(-90deg);
+  }
+
+.content a:nth-of-type(even) {
+    transform-origin: center bottom;
+    transform: perspective(300px) rotateX(90deg);
+    margin-top: -2 * 50px;
+  }
+
+    .input-group{
+        margin-bottom: 50px;
+    }
+
+</style>
+</head>
+<body>
+
+{% if user.is_authenticated %}
+    {% if user.is_superuser %}
+        <center>
+        <footer>
+            <h1 style="background-color:#959595; padding:30px;">
+            Admin Panel
+                </h1>
+        </footer>
+            <hr>
+        </center>
+    {% else %}
+        <center>
+        <footer>
+            <h1 style="background-color:#959595; padding:30px;">
+            User Panel
+                </h1>
+        </footer>
+            <hr>
+        </center>
+    {% endif %}
+
+    <div style="display: inline-block; float: right;  direction: ltr; text-align:right;">
+       <h3> Username <br> ( {{ user.username }} ) </h3>
+        <button class="collapsible">Admin Profile</button>
+        <div class="content">
+        <br>
+        {% if user.is_superuser %}
+            <a href="/permissions-field/">Set Permission For Users </a><br><br>
+        {% endif %}
+        <a href="/jalali/">Persian Date</a><br><br>
+        <a href="{% url 'password_reset' %}">Reset Password</a><br><br>
+        <a href="{% url 'logout' %}">Logout</a><br>
+
+        <br>
+        </div>
+
+        <button class="collapsible">Users</button>
+        <div class="content">
+
+        <a href="/users/">All Users</a><br><br>
+        <a href="{% url 'signup' %}">Add User</a><br><br>
+        <br>
+        </div>
+
+        <button class="collapsible">Image Gallery</button>
+        <div class="content">
+        <br>
+        <a href="/show-medias/">All Media</a><br><br>
+        <a href="/upload-image/">Add Picture</a><br><br>
+        <br>
+        </div>
+
+        <button class="collapsible">About</button>
+        <div class="content">
+        <br>
+        <a href="#">About Us</a><br><br>
+        <a href="#">Contact</a><br><br>
+        <br>
+        </div>
+
+    </div>
+{% endif %}
+
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var items = document.querySelectorAll(".content");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+    var _i = i;
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+        for(var index = 0; index < items.length; index++) {
+            var _item = items[index];
+            _item.style.maxHeight = null;
+        }
+      content.style.maxHeight = content.scrollHeight + "px";
+    }
+  });
+}
+</script>
+
+{% block contain %}
+{% endblock %}
+
+</body>
+</html>

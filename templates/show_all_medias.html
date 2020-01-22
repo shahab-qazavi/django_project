@@ -1,0 +1,28 @@
+{% extends 'main.html' %}
+
+{% block title %}Permission{% endblock %}
+
+{% block contain %}
+{% if user.is_authenticated %}
+
+<center>
+    <table>
+        {% for item in medias %}
+
+    <tr>
+        <td>
+            <div><img src="{{ path }}{{ item }}"></div>
+
+        </td>
+
+    </tr>
+        {% endfor %}
+        </table>
+    </center>
+{% else %}
+<center>
+  <h1>First Login Please</h1>
+  <a href="{% url 'login' %}"><h2>Login</h2></a>
+</center>
+{% endif %}
+{% endblock %}

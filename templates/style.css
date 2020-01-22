@@ -1,0 +1,53 @@
+
+body {
+  font-family: "Open Sans", "Arial";
+}
+nav {
+  width: 300px;
+  height: 1000px;
+  float: right;
+  margin-right: 1em;
+  input {
+    display: none;
+  }
+  label, .subitems a {
+    display: block;
+    color: white;
+    text-indent: 1em;
+    height: 50px;
+    line-height: $h;
+    text-decoration: none;
+  }
+  label {
+    background: #333;
+  }
+  .subitems a {
+    background: -webkit-linear-gradient(top, #555, #666);
+    transition: all 350ms;
+  }
+  .subitems a:nth-of-type(odd) {
+    transform-origin: center top;
+    transform: perspective(300px) rotateX(-90deg);
+  }
+  .subitems a:nth-of-type(even) {
+    transform-origin: center bottom;
+    transform: perspective(300px) rotateX(90deg);
+    margin-top: -2* 50px;
+  }
+  input:checked+.subitems a {
+    transform: rotateX(0deg);
+    margin-top: 0;
+  }
+}
+main {
+  float: right;
+}
+footer {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  font-size: 13px;
+  background: #DDD;
+  padding: 5px 10px;
+  margin: 5px;
+}
